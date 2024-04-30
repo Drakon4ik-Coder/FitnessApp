@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">FitnessApp</string>
+    <string name="add_calories_button">Add Calories</string>
+</resources>

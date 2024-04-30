@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+                                                   android:id="@+id/caloriesActivity">
+
+    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+            android:id="@+id/caloriesProgressBar"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            app:cpb_background_progressbar_color="#b6bbd8"
+            app:cpb_background_progressbar_width="40dp"
+            app:cpb_progress_direction="to_right"
+            app:cpb_progressbar_color="#3f51b5"
+            app:cpb_progressbar_width="25dp"
+            app:cpb_progress="56"
+            app:cpb_round_border="true"
+            app:layout_constraintTop_toTopOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    <androidx.constraintlayout.widget.Guideline android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                                android:id="@+id/guideline"
+                                                android:orientation="horizontal"
+                                                app:layout_constraintGuide_percent="0.05"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/caloriesProgressText"
+            app:layout_constraintTop_toTopOf="@+id/caloriesProgressBar"
+            app:layout_constraintBottom_toBottomOf="@+id/caloriesProgressBar"
+            app:layout_constraintStart_toStartOf="@+id/caloriesProgressBar"
+            app:layout_constraintEnd_toEndOf="@+id/caloriesProgressBar"/>
+    <Button
+            android:text="@string/add_calories_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/calloriesButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.498" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/caloriesInput" android:layout_marginTop="60dp"/>
+    <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="numberSigned"
+            android:ems="10"
+            android:id="@+id/caloriesInput"
+            app:layout_constraintTop_toBottomOf="@+id/caloriesProgressBar"
+            android:layout_marginTop="100dp" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
