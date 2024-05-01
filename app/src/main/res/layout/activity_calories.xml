@@ -14,8 +14,7 @@
             android:indeterminate="false"
             android:max="100"
             android:progress="0"
-            android:progressDrawable="@drawable/circle_progress_drawable"
-            android:secondaryProgress="100" />
+            android:progressDrawable="@drawable/circle_progress_drawable" />
 
     <!-- Text representation in the center -->
     <TextView
