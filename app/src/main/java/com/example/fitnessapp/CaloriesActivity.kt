@@ -1,5 +1,6 @@
 package com.example.fitnessapp
 
+import android.animation.ValueAnimator
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -15,7 +16,7 @@ class CaloriesActivity : AppCompatActivity() {
     private lateinit var buttonAddCalories: Button
 
     private var consumedCalories: Int = 0
-    private val maxCalories: Int = 1000 // Set your maximum calories here
+    private val maxCalories: Int = 2000 // Set your maximum calories here
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,9 +28,6 @@ class CaloriesActivity : AppCompatActivity() {
         editTextCalories = findViewById(R.id.editTextCalories)
         buttonAddCalories = findViewById(R.id.buttonAddCalories)
 
-        // Set initial progress text
-        updateProgressText()
-
         // Set click listener for the button to add calories
         buttonAddCalories.setOnClickListener {
             addCalories()
@@ -37,28 +35,22 @@ class CaloriesActivity : AppCompatActivity() {
     }
 
     private fun addCalories() {
-        val inputCalories = editTextCalories.text.toString().toIntOrNull()
-        if (inputCalories != null && inputCalories > 0) {
-            consumedCalories += inputCalories
-            if (consumedCalories > maxCalories) {
-                consumedCalories = maxCalories
+        val caloriesToAdd = editTextCalories.text.toString().toIntOrNull()
+        caloriesToAdd?.let { calories ->
+            val animator = ValueAnimator.ofInt(consumedCalories, consumedCalories + calories)
+            animator.duration = 1000 // Adjust the duration as needed
+            animator.addUpdateListener { valueAnimator ->
+                consumedCalories = valueAnimator.animatedValue as Int
+                updateProgress()
             }
-            updateProgress()
-            updateProgressText()
+            animator.start()
             editTextCalories.text.clear()
-        } else {
-            // Handle invalid input
-            // For example, show a toast message
-            // Toast.makeText(this, "Invalid input", Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun updateProgress() {
-        val progress = (consumedCalories.toFloat() / maxCalories.toFloat() * 100).toInt()
-        progressBarCalories.progress = progress
-    }
-
-    private fun updateProgressText() {
         textViewProgressCalories.text = "$consumedCalories/$maxCalories"
+        val progress = (consumedCalories.toDouble() / maxCalories.toDouble() * 100).toInt()
+        progressBarCalories.progress = progress
     }
 }
