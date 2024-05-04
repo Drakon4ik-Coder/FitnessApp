@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 
 class CaloriesActivity : AppCompatActivity() {
@@ -19,6 +20,7 @@ class CaloriesActivity : AppCompatActivity() {
     private val maxCalories: Int = 2000 // Set your maximum calories here
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_calories)
 
