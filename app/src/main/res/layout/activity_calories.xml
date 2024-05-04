@@ -2,14 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:padding="16dp">
+                android:padding="@dimen/_16sdp">
 
     <!-- Circular progress bar for calories -->
     <ProgressBar
         android:id="@+id/progressBarCalories"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_200sdp"
         android:layout_centerInParent="true"
         android:indeterminate="false"
         android:max="100"
@@ -23,7 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="0/2000"
-            android:textSize="24sp" />
+            android:textSize="@dimen/_24sdp" />
 
     <!-- Input text for calories -->
     <EditText
@@ -31,7 +31,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/progressBarCalories"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/_16sdp"
             android:hint="Enter calories"
             android:inputType="number" />
 
@@ -42,7 +42,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/editTextCalories"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="@dimen/_16sdp"
             android:text="Add Calories" />
 
 </RelativeLayout>
