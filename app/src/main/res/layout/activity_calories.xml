@@ -51,9 +51,64 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- Input text for calories -->
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        tools:layout_editor_absoluteX="-5dp">
 
-    <!-- Button to add calories -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="@dimen/_10sdp">
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:progress="40"
+                android:progressDrawable="@drawable/linear_progress_drawable" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="@dimen/_10sdp">
+
+            <ProgressBar
+                android:id="@+id/progressBar2"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:progress="60"
+                android:progressDrawable="@drawable/linear_progress_drawable" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="@dimen/_10sdp">
+
+            <ProgressBar
+                android:id="@+id/progressBar3"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:progress="20"
+                android:progressDrawable="@drawable/linear_progress_drawable" />
+        </LinearLayout>
+    </LinearLayout>
+
     <Button
         android:id="@+id/buttonAddCalories"
         android:layout_width="wrap_content"
@@ -68,12 +123,12 @@
         android:id="@+id/editTextCalories"
         android:layout_width="@dimen/_100sdp"
         android:layout_height="@dimen/_37sdp"
-        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginTop="44dp"
         android:hint="Enter calories"
         android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
