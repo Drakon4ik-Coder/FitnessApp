@@ -4,7 +4,7 @@
     <string name="protein_text">Protein</string>
     <string name="carbs_text">Carbs</string>
     <string name="fats_text">Fats</string>
-    <string name="add_calories">Add Calories</string>
+    <string name="add_calories">Add meal</string>
     <string name="enter_calories">Enter calories</string>
     <string name="calories_progress">0/2000</string>
 </resources>

@@ -1,9 +1,9 @@
 package com.example.fitnessapp
 
 import android.animation.ValueAnimator
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -13,8 +13,7 @@ class CaloriesActivity : AppCompatActivity() {
 
     private lateinit var progressBarCalories: ProgressBar
     private lateinit var textViewProgressCalories: TextView
-    private lateinit var editTextCalories: EditText
-    private lateinit var buttonAddCalories: Button
+    private lateinit var buttonAddMeal: Button
 
     private var consumedCalories: Int = 0
     private val maxCalories: Int = 2000 // Set your maximum calories here
@@ -27,27 +26,17 @@ class CaloriesActivity : AppCompatActivity() {
         // Initialize views
         progressBarCalories = findViewById(R.id.progressBarCalories)
         textViewProgressCalories = findViewById(R.id.textViewProgressCalories)
-        editTextCalories = findViewById(R.id.editTextCalories)
-        buttonAddCalories = findViewById(R.id.buttonAddCalories)
+        buttonAddMeal = findViewById(R.id.buttonAddCalories)
 
         // Set click listener for the button to add calories
-        buttonAddCalories.setOnClickListener {
-            addCalories()
+        buttonAddMeal.setOnClickListener {
+            addMeal()
         }
     }
 
-    private fun addCalories() {
-        val caloriesToAdd = editTextCalories.text.toString().toIntOrNull()
-        caloriesToAdd?.let { calories ->
-            val animator = ValueAnimator.ofInt(consumedCalories, consumedCalories + calories)
-            animator.duration = 1000 // Adjust the duration as needed
-            animator.addUpdateListener { valueAnimator ->
-                consumedCalories = valueAnimator.animatedValue as Int
-                updateProgress()
-            }
-            animator.start()
-            editTextCalories.text.clear()
-        }
+    private fun addMeal() {
+        startActivity(Intent(this, AddMealActivity::class.java).apply {
+        })
     }
 
     private fun updateProgress() {

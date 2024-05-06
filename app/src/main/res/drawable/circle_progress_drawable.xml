@@ -9,6 +9,7 @@
                 android:thicknessRatio="8"
                 android:useLevel="false">
             <solid android:color="@color/progressBarBackground" />
+            <corners android:radius="@dimen/_50sdp"/>
         </shape>
     </item>
 
