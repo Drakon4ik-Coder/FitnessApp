@@ -1,12 +1,16 @@
 package com.example.fitnessapp
 
 import android.animation.ValueAnimator
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 
 class CaloriesActivity : AppCompatActivity() {
@@ -30,7 +34,16 @@ class CaloriesActivity : AppCompatActivity() {
 
         // Set click listener for the button to add calories
         buttonAddMeal.setOnClickListener {
-            addMeal()
+            val intent = Intent(this, AddMealActivity::class.java)
+            startForResult.launch(intent)
+        }
+    }
+
+    val startForResult = registerForActivityResult<Intent, ActivityResult>(ActivityResultContracts.StartActivityForResult()) {
+            result: ActivityResult ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            val intent = result.data
+            updateProgress(intent?.getIntExtra("calories", 0) ?: 0)
         }
     }
 
@@ -39,9 +52,17 @@ class CaloriesActivity : AppCompatActivity() {
         })
     }
 
-    private fun updateProgress() {
-        textViewProgressCalories.text = "$consumedCalories/$maxCalories"
-        val progress = (consumedCalories.toDouble() / maxCalories.toDouble() * 100).toInt()
-        progressBarCalories.progress = progress
+    private fun updateProgress(caloriesAdd: Int) {
+        caloriesAdd.let { calories ->
+            val animator = ValueAnimator.ofInt(consumedCalories, consumedCalories + calories)
+            animator.duration = 1000 // Adjust the duration as needed
+            animator.addUpdateListener { valueAnimator ->
+                consumedCalories = valueAnimator.animatedValue as Int
+                textViewProgressCalories.text = "$consumedCalories/$maxCalories"
+                val progress = (consumedCalories.toDouble() / maxCalories.toDouble() * 100).toInt()
+                progressBarCalories.progress = progress
+            }
+            animator.start()
+        }
     }
 }
