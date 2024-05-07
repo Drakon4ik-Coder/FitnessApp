@@ -9,11 +9,10 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResult
-import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 
-class CaloriesActivity : AppCompatActivity() {
+class NutritionActivity : AppCompatActivity() {
 
     private lateinit var progressBarCalories: ProgressBar
     private lateinit var textViewProgressCalories: TextView
@@ -25,7 +24,7 @@ class CaloriesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_calories)
+        setContentView(R.layout.activity_nutrition)
 
         // Initialize views
         progressBarCalories = findViewById(R.id.progressBarCalories)
@@ -47,19 +46,15 @@ class CaloriesActivity : AppCompatActivity() {
         }
     }
 
-    private fun addMeal() {
-        startActivity(Intent(this, AddMealActivity::class.java).apply {
-        })
-    }
-
     private fun updateProgress(caloriesAdd: Int) {
         caloriesAdd.let { calories ->
             val animator = ValueAnimator.ofInt(consumedCalories, consumedCalories + calories)
             animator.duration = 1000 // Adjust the duration as needed
             animator.addUpdateListener { valueAnimator ->
                 consumedCalories = valueAnimator.animatedValue as Int
-                textViewProgressCalories.text = "$consumedCalories/$maxCalories"
-                val progress = (consumedCalories.toDouble() / maxCalories.toDouble() * 100).toInt()
+                textViewProgressCalories.text =
+                    getString(R.string.calories_text_progress, consumedCalories.toString(), maxCalories.toString())
+                val progress = (consumedCalories.toDouble() / maxCalories.toDouble() * 10000).toInt()
                 progressBarCalories.progress = progress
             }
             animator.start()
