@@ -1,6 +1,8 @@
 package com.example.fitnessapp
 
-class Meal(val name: String) {
+import java.io.Serializable
+
+class Meal(val name: String) : Serializable {
     private val ingredients = mutableListOf<Ingredient>()
 
     fun addIngredient(ingredient: Ingredient) {

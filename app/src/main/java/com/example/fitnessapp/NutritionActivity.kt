@@ -42,11 +42,19 @@ class NutritionActivity : AppCompatActivity() {
             result: ActivityResult ->
         if (result.resultCode == Activity.RESULT_OK) {
             val intent = result.data
-            updateProgress(intent?.getIntExtra("calories", 0) ?: 0)
+            val meal = intent?.getParcelableExtra("meal", Meal::class.java)
+            meal?.let {
+                updateProgress(meal)
+            }
         }
     }
 
-    private fun updateProgress(caloriesAdd: Int) {
+    private fun updateProgress(meal: Meal) {
+        var caloriesAdd = 0
+        val ingredients = meal.getIngredients()
+        for (ingredient in ingredients) {
+            caloriesAdd+= ingredient.getNutrient("calories")?.amount?.toInt() ?: 0
+        }
         caloriesAdd.let { calories ->
             val animator = ValueAnimator.ofInt(consumedCalories, consumedCalories + calories)
             animator.duration = 1000 // Adjust the duration as needed

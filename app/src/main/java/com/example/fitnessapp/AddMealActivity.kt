@@ -14,6 +14,7 @@ class AddMealActivity : AppCompatActivity() {
 
     private lateinit var addMealButton: Button
     private lateinit var caloriesInput: EditText
+    private lateinit var ingredientInput: EditText
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -23,13 +24,20 @@ class AddMealActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        addMealButton = findViewById(com.example.fitnessapp.R.id.add_meal)
+        addMealButton = findViewById(R.id.add_meal)
         caloriesInput = findViewById(R.id.calories_input)
+        ingredientInput = findViewById(R.id.ingredient_name_input)
         addMealButton.setOnClickListener {
             val inputCalories = caloriesInput.text.toString().toIntOrNull()
+            val ingredientName = ingredientInput.text.toString()
             if (inputCalories != null && inputCalories > 0) {
+                val calorie = Nutrient("calories", inputCalories.toDouble(), "kkal")
+                val ingredient = Ingredient(ingredientName)
+                ingredient.addNutrient(calorie)
+                val meal = Meal("Tasty ass meal")
+                meal.addIngredient(ingredient)
                 val intent = Intent()
-                intent.putExtra("calories", inputCalories)
+                intent.putExtra("meal", meal)
                 setResult(RESULT_OK, intent)
                 finish()
             } else {

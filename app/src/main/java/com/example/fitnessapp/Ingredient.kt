@@ -1,6 +1,8 @@
 package com.example.fitnessapp
 
-class Ingredient(val name: String) {
+import java.io.Serializable
+
+class Ingredient(val name: String) : Serializable {
     private val nutrientsMap = mutableMapOf<String, Nutrient>()
 
     fun addNutrient(nutrient: Nutrient) {
