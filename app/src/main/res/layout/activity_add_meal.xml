@@ -19,13 +19,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nutrient"
+                android:text="@string/nutrients"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Amount"
+                android:text="@string/amount"
                 android:textStyle="bold" />
         </TableRow>
 
@@ -34,14 +34,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Calories" />
+                android:text="@string/calories" />
 
             <EditText
                 android:id="@+id/editTextCalories"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:hint="@string/_0"
+                tools:ignore="Autofill" />
         </TableRow>
 
         <TableRow>
@@ -49,14 +51,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Protein" />
+                android:text="@string/protein" />
 
             <EditText
                 android:id="@+id/editTextProtein"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:hint="@string/_0"
+                tools:ignore="Autofill" />
         </TableRow>
 
         <TableRow>
@@ -64,14 +68,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Carbs" />
+                android:text="@string/carbs" />
 
             <EditText
                 android:id="@+id/editTextCarbs"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:hint="@string/_0"
+                tools:ignore="Autofill" />
         </TableRow>
 
         <TableRow>
@@ -79,14 +85,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sugars" />
+                android:text="@string/sugars" />
 
             <EditText
                 android:id="@+id/editTextSugars"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:hint="@string/_0"
+                tools:ignore="Autofill" />
         </TableRow>
 
         <TableRow>
@@ -94,14 +102,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Fibers" />
+                android:text="@string/fibers" />
 
             <EditText
                 android:id="@+id/editTextFibers"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:hint="@string/_0"
+                tools:ignore="Autofill" />
         </TableRow>
 
         <TableRow>
@@ -109,14 +119,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Fats" />
+                android:text="@string/fats" />
 
             <EditText
                 android:id="@+id/editTextFats"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                android:hint="@string/_0"
+                tools:ignore="Autofill" />
         </TableRow>
 
     </TableLayout>

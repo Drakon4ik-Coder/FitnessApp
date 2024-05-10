@@ -12,4 +12,9 @@
     <string name="calories_text_progress">%1$s/%2$s</string>
     <string name="enter_ingredient_name">Enter ingredient name</string>
     <string name="ingredient_name">Ingredient name</string>
+    <string name="nutrients">Nutrients</string>
+    <string name="amount">Amount</string>
+    <string name="_0">0</string>
+    <string name="sugars">Sugars</string>
+    <string name="fibers">Fibers</string>
 </resources>
