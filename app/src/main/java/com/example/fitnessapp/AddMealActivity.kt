@@ -4,17 +4,18 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
+import android.widget.TableLayout
+import android.widget.TableRow
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.textview.MaterialTextView
 
 class AddMealActivity : AppCompatActivity() {
 
     private lateinit var addMealButton: Button
-    private lateinit var caloriesInput: EditText
-    private lateinit var ingredientInput: EditText
+    private lateinit var tableLayout: TableLayout
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -24,25 +25,28 @@ class AddMealActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        tableLayout = findViewById(R.id.nutrition_table)
+
         addMealButton = findViewById(R.id.add_meal)
-        caloriesInput = findViewById(R.id.calories_input)
-        ingredientInput = findViewById(R.id.ingredient_name_input)
         addMealButton.setOnClickListener {
-            val inputCalories = caloriesInput.text.toString().toIntOrNull()
-            val ingredientName = ingredientInput.text.toString()
-            if (inputCalories != null && inputCalories > 0) {
-                val calorie = Nutrient("calories", inputCalories.toDouble(), "kkal")
-                val ingredient = Ingredient(ingredientName)
-                ingredient.addNutrient(calorie)
-                val meal = Meal("Tasty ass meal")
-                meal.addIngredient(ingredient)
-                val intent = Intent()
-                intent.putExtra("meal", meal)
-                setResult(RESULT_OK, intent)
-                finish()
-            } else {
-                Toast.makeText(this, "Invalid input", Toast.LENGTH_SHORT).show()
+            val ingredient = Ingredient("Example Ingredient")
+
+            for (i in 1 until tableLayout.childCount) {
+                val row = tableLayout.getChildAt(i) as? TableRow
+                row?.let {
+                    val nutrientName = (row.getChildAt(0) as MaterialTextView).text.toString().lowercase()
+                    val nutrientAmount = (row.getChildAt(1) as EditText).text.toString().toDoubleOrNull() ?: 0.0
+                    val nutrient = Nutrient(nutrientName, nutrientAmount, "g")
+                    ingredient.addNutrient(nutrient)
+                }
             }
+            val meal = Meal("Example Meal")
+            meal.addIngredient(ingredient)
+
+            val intent = Intent()
+            intent.putExtra("meal", meal)
+            setResult(RESULT_OK, intent)
+            finish()
         }
     }
 }
