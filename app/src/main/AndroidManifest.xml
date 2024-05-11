@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FitnessApp">
         <activity
+            android:name=".NewIngredientActivity"
+            android:exported="false" />
+        <activity
             android:name=".AddMealActivity"
             android:exported="false" />
         <activity

@@ -7,140 +7,67 @@
     android:layout_height="match_parent"
     tools:context=".AddMealActivity">
 
-    <TableLayout
-        android:id="@id/nutrition_table"
-        android:layout_width="match_parent"
+    <EditText
+        android:id="@+id/meal_name"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:stretchColumns="*"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/nutrients"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/amount"
-                android:textStyle="bold" />
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/calories" />
-
-            <EditText
-                android:id="@+id/editTextCalories"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:inputType="numberDecimal"
-                android:hint="@string/_0"
-                tools:ignore="Autofill" />
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/protein" />
-
-            <EditText
-                android:id="@+id/editTextProtein"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:inputType="numberDecimal"
-                android:hint="@string/_0"
-                tools:ignore="Autofill" />
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/carbs" />
-
-            <EditText
-                android:id="@+id/editTextCarbs"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:inputType="numberDecimal"
-                android:hint="@string/_0"
-                tools:ignore="Autofill" />
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/sugars" />
-
-            <EditText
-                android:id="@+id/editTextSugars"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:inputType="numberDecimal"
-                android:hint="@string/_0"
-                tools:ignore="Autofill" />
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/fibers" />
-
-            <EditText
-                android:id="@+id/editTextFibers"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:inputType="numberDecimal"
-                android:hint="@string/_0"
-                tools:ignore="Autofill" />
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/fats" />
-
-            <EditText
-                android:id="@+id/editTextFats"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:inputType="numberDecimal"
-                android:hint="@string/_0"
-                tools:ignore="Autofill" />
-        </TableRow>
-
-    </TableLayout>
+        android:autofillHints="food"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="@string/meal_name"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/add_meal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="20dp"
         android:text="@string/submit_meal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nutrition_table" />
+        app:layout_constraintTop_toBottomOf="@+id/add_ingredient" />
+
+    <ImageButton
+        android:id="@+id/add_ingredient"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/add_ingredient"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ingredient_table"
+        app:srcCompat="@drawable/add_button" />
+
+    <TableLayout
+        android:id="@+id/ingredient_table"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/meal_name">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </TableLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
