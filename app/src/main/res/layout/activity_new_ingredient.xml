@@ -68,10 +68,27 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/protein" />
+                android:text="@string/fats" />
 
             <EditText
-                android:id="@+id/editTextProtein"
+                android:id="@+id/editTextFats"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/_0"
+                android:inputType="numberDecimal"
+                tools:ignore="Autofill" />
+        </TableRow>
+
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/saturated_fats" />
+
+            <EditText
+                android:id="@+id/editTextSatFats"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -136,10 +153,10 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/fats" />
+                android:text="@string/protein" />
 
             <EditText
-                android:id="@+id/editTextFats"
+                android:id="@+id/editTextProtein"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
