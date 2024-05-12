@@ -2,4 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="progressBarBackground">#747474</color>
+    <color name="progressBarColor">#367CF4</color>
 </resources>

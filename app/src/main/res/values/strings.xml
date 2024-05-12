@@ -1,4 +1,22 @@
 <resources>
     <string name="app_name">FitnessApp</string>
-    <string name="add_calories_button">Add Calories</string>
+    <string name="add_calories">Add Calories</string>
+    <string name="calories">Calories</string>
+    <string name="protein">Protein</string>
+    <string name="carbs">Carbs</string>
+    <string name="fats">Fats</string>
+    <string name="add_meal">Add meal</string>
+    <string name="calories_progress">0/2000</string>
+    <string name="enter_calories">Enter calories</string>
+    <string name="submit_meal">Submit Meal</string>
+    <string name="calories_text_progress">%1$s/%2$s</string>
+    <string name="ingredient_name">Ingredient name</string>
+    <string name="nutrients">Nutrients</string>
+    <string name="amount">Amount</string>
+    <string name="_0">0</string>
+    <string name="sugars">Sugars</string>
+    <string name="fibers">Fibers</string>
+    <string name="add_ingredient">Add ingredient</string>
+    <string name="meal_name">Meal name</string>
+    <string name="saturated_fats">Saturated Fats</string>
 </resources>
