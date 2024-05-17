@@ -16,4 +16,7 @@ interface FoodDao {
     @Delete
     fun delete(food: Food)
 
+    @Query("DELETE FROM food")
+    fun nukeTable()
+
 }

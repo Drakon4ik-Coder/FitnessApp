@@ -4,6 +4,7 @@ import android.animation.ValueAnimator
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -25,6 +26,16 @@ class NutritionActivity : AppCompatActivity() {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nutrition)
+
+        Thread {
+            val db = Database.getInstance(this)
+            var tmp = db.foodDao().getAll()
+            Log.d("tmp", tmp.size.toString())
+            db.foodDao().nukeTable()
+            db.foodDao().insert(Food(1, "Carrot", ""))
+            tmp = db.foodDao().getAll()
+            Log.d("tmp", tmp.size.toString())
+        }.start()
 
         // Initialize views
         progressBarCalories = findViewById(R.id.progressBarCalories)

@@ -12,7 +12,7 @@ object Database {
             if (instance == null) {
                 instance = Room.databaseBuilder(
                     context.applicationContext,
-                    AppDatabase::class.java, "database-name"
+                    AppDatabase::class.java, "database"
                 ).build()
             }
             return instance as AppDatabase
