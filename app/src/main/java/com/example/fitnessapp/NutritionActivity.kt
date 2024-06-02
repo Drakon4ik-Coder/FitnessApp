@@ -16,6 +16,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.room.Room
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.util.Date
 
 class NutritionActivity : AppCompatActivity() {
 
@@ -45,19 +46,25 @@ class NutritionActivity : AppCompatActivity() {
             val mealDao = db.mealDao()
             foodDao.nukeTable()
             mealDao.nukeTable()
-            val cheese = foodDao.insert(Food(name = "Cheese")).toInt()
-            val tomato = foodDao.insert(Food(name = "Tomato")).toInt()
-            val pepperoni = foodDao.insert(Food(name = "Pepperoni")).toInt()
-            val beef = foodDao.insert(Food(name = "Beef")).toInt()
-            val pizza = foodDao.insert(Food(name = "Pizza")).toInt()
-            val spaghetti = foodDao.insert(Food(name = "Spaghetti")).toInt()
+            val cheese = foodDao.insertFood(Food(name = "Cheese")).toInt()
+            val tomato = foodDao.insertFood(Food(name = "Tomato")).toInt()
+            val pepperoni = foodDao.insertFood(Food(name = "Pepperoni")).toInt()
+            val beef = foodDao.insertFood(Food(name = "Beef")).toInt()
+            val pizza = foodDao.insertFood(Food(name = "Pizza")).toInt()
+            val spaghetti = foodDao.insertFood(Food(name = "Spaghetti")).toInt()
             mealDao.insert(MealIngredients(pizza, cheese, 100f))
             mealDao.insert(MealIngredients(pizza, tomato, 100f))
             mealDao.insert(MealIngredients(pizza, pepperoni, 100f))
             mealDao.insert(MealIngredients(spaghetti, beef, 100f))
             mealDao.insert(MealIngredients(spaghetti, cheese, 100f))
             mealDao.insert(MealIngredients(spaghetti, tomato, 100f))
-            Log.d("Food", mealDao.getIngredientsForMeal(pizza).toString())
+            Log.d("Ingredients", mealDao.getIngredientsForMeal(pizza).toString())
+
+            foodDao.insertFoodAction(FoodAction(foodID = cheese, action = Action.ADDED, date = System.currentTimeMillis(), amount = 500f))
+            foodDao.insertFoodAction(FoodAction(foodID = cheese, action = Action.EATEN, date = System.currentTimeMillis(), amount = 100f))
+            foodDao.insertFoodAction(FoodAction(foodID = cheese, action = Action.COOKED, date = System.currentTimeMillis(), amount = 50f))
+            foodDao.insertFoodAction(FoodAction(foodID = cheese, action = Action.DISPOSED, date = System.currentTimeMillis(), amount = 40f))
+            Log.d("Available", foodDao.getAvailableForFood(cheese).toString())
         }.start()
 
         // Initialize views
