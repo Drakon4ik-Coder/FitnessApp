@@ -12,6 +12,10 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import androidx.room.Room
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class NutritionActivity : AppCompatActivity() {
 
@@ -22,19 +26,38 @@ class NutritionActivity : AppCompatActivity() {
     private var consumedCalories: Int = 0
     private val maxCalories: Int = 2000 // Set your maximum calories here
 
+    private lateinit var db: AppDatabase
+
     override fun onCreate(savedInstanceState: Bundle?) {
         enableEdgeToEdge()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_nutrition)
 
-        Thread {
-            val db = Database.getInstance(this)
-            var tmp = db.foodDao().getAll()
-            Log.d("tmp", tmp.size.toString())
-            db.foodDao().nukeTable()
-            db.foodDao().insert(Food(1, "Carrot", ""))
-            tmp = db.foodDao().getAll()
-            Log.d("tmp", tmp.size.toString())
+        this.deleteDatabase("database")
+
+        db = Room.databaseBuilder(
+            applicationContext,
+            AppDatabase::class.java, "database"
+        ).build()
+
+        lifecycleScope.launch(Dispatchers.IO) {
+            val foodDao = db.foodDao()
+            val mealDao = db.mealDao()
+            foodDao.nukeTable()
+            mealDao.nukeTable()
+            val cheese = foodDao.insert(Food(name = "Cheese")).toInt()
+            val tomato = foodDao.insert(Food(name = "Tomato")).toInt()
+            val pepperoni = foodDao.insert(Food(name = "Pepperoni")).toInt()
+            val beef = foodDao.insert(Food(name = "Beef")).toInt()
+            val pizza = foodDao.insert(Food(name = "Pizza")).toInt()
+            val spaghetti = foodDao.insert(Food(name = "Spaghetti")).toInt()
+            mealDao.insert(MealIngredients(pizza, cheese, 100f))
+            mealDao.insert(MealIngredients(pizza, tomato, 100f))
+            mealDao.insert(MealIngredients(pizza, pepperoni, 100f))
+            mealDao.insert(MealIngredients(spaghetti, beef, 100f))
+            mealDao.insert(MealIngredients(spaghetti, cheese, 100f))
+            mealDao.insert(MealIngredients(spaghetti, tomato, 100f))
+            Log.d("Food", mealDao.getIngredientsForMeal(pizza).toString())
         }.start()
 
         // Initialize views

@@ -3,13 +3,13 @@ package com.example.fitnessapp
 import java.io.Serializable
 
 class Meal(val name: String) : Serializable {
-    private val ingredients = mutableListOf<Ingredient>()
+    private val ingredientTMPS = mutableListOf<IngredientTMP>()
 
-    fun addIngredient(ingredient: Ingredient) {
-        ingredients.add(ingredient)
+    fun addIngredient(ingredientTMP: IngredientTMP) {
+        ingredientTMPS.add(ingredientTMP)
     }
 
-    fun getIngredients(): List<Ingredient> {
-        return ingredients.toList()
+    fun getIngredients(): List<IngredientTMP> {
+        return ingredientTMPS.toList()
     }
 }

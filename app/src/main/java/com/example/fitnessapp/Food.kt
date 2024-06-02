@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Food(
-    @PrimaryKey val id: Int,
+    @PrimaryKey(autoGenerate = true) val id: Int = 0,
     @ColumnInfo(name = "name") val name: String,
-    @ColumnInfo(name = "image") val image: String
+    @ColumnInfo(name = "image") val image: String = ""
 )

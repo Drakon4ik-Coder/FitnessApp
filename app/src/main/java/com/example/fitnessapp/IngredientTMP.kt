@@ -2,7 +2,7 @@ package com.example.fitnessapp
 
 import java.io.Serializable
 
-class Ingredient(val name: String) : Serializable {
+class IngredientTMP(val name: String) : Serializable {
     private val nutrientsMap = mutableMapOf<String, Nutrient>()
 
     fun addNutrient(nutrient: Nutrient) {

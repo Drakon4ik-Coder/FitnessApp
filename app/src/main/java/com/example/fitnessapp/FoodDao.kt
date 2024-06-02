@@ -10,13 +10,19 @@ interface FoodDao {
     @Query("SELECT * FROM food")
     fun getAll(): List<Food>
 
+    @Query("SELECT * FROM Food WHERE id = :id")
+    suspend fun getFoodById(id: Int): Food
+
+    @Query("SELECT * FROM Food WHERE name = :name")
+    suspend fun getFoodByName(name: String): List<Food>
+
     @Insert
-    fun insert(food: Food)
+    suspend fun insert(food: Food): Long
 
     @Delete
-    fun delete(food: Food)
+    suspend fun delete(food: Food)
 
     @Query("DELETE FROM food")
-    fun nukeTable()
+    suspend fun nukeTable()
 
 }

@@ -30,7 +30,7 @@ class NewIngredientActivity : AppCompatActivity() {
 
         addIngredientButton = findViewById(R.id.add_ingredient_button)
         addIngredientButton.setOnClickListener {
-            val ingredient = Ingredient(ingredientName.text.toString())
+            val ingredientTMP = IngredientTMP(ingredientName.text.toString())
 
             for (i in 1 until tableLayout.childCount) {
                 val row = tableLayout.getChildAt(i) as? TableRow
@@ -38,12 +38,12 @@ class NewIngredientActivity : AppCompatActivity() {
                     val nutrientName = (row.getChildAt(0) as MaterialTextView).text.toString().lowercase()
                     val nutrientAmount = (row.getChildAt(1) as EditText).text.toString().toDoubleOrNull() ?: 0.0
                     val nutrient = Nutrient(nutrientName, nutrientAmount, "g")
-                    ingredient.addNutrient(nutrient)
+                    ingredientTMP.addNutrient(nutrient)
                 }
             }
 
             val intent = Intent()
-            intent.putExtra("ingredient", ingredient)
+            intent.putExtra("ingredient", ingredientTMP)
             setResult(RESULT_OK, intent)
             finish()
         }

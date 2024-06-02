@@ -23,7 +23,7 @@ class AddMealActivity : AppCompatActivity() {
     private lateinit var addIngredientButton: ImageButton
     private lateinit var tableLayout: TableLayout
     private lateinit var mealName: EditText
-    private val ingredientList : MutableList<Ingredient> = mutableListOf()
+    private val ingredientTMPList : MutableList<IngredientTMP> = mutableListOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -43,7 +43,7 @@ class AddMealActivity : AppCompatActivity() {
         addMealButton = findViewById(R.id.add_meal)
         addMealButton.setOnClickListener {
             val meal = Meal(mealName.text.toString())
-            for (ingredient in ingredientList) {
+            for (ingredient in ingredientTMPList) {
                 meal.addIngredient(ingredient)
             }
             val intent = Intent()
@@ -56,9 +56,9 @@ class AddMealActivity : AppCompatActivity() {
             result: ActivityResult ->
         if (result.resultCode == Activity.RESULT_OK) {
             val intent = result.data
-            val ingredient = intent?.getParcelableExtra("ingredient", Ingredient::class.java)
-            ingredient?.let {
-                ingredientList.add(ingredient)
+            val ingredientTMP = intent?.getParcelableExtra("ingredient", IngredientTMP::class.java)
+            ingredientTMP?.let {
+                ingredientTMPList.add(ingredientTMP)
             }
             updateIngredientTable()
         }
@@ -66,7 +66,7 @@ class AddMealActivity : AppCompatActivity() {
 
     private fun updateIngredientTable() {
         clearTableLayout(tableLayout)
-        for(ingredient in ingredientList) {
+        for(ingredient in ingredientTMPList) {
             val row = TableRow(this)
             val params = TableRow.LayoutParams(
                 TableRow.LayoutParams.WRAP_CONTENT,
