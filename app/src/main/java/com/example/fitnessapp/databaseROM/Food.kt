@@ -1,4 +1,4 @@
-package com.example.fitnessapp
+package com.example.fitnessapp.databaseROM
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

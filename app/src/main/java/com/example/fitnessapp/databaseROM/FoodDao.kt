@@ -1,4 +1,4 @@
-package com.example.fitnessapp
+package com.example.fitnessapp.databaseROM
 
 import androidx.room.Dao
 import androidx.room.Delete
@@ -13,37 +13,37 @@ interface FoodDao {
     fun getAllFood(): List<Food>
 
     @Query("SELECT * FROM Food WHERE id = :id")
-    suspend fun getFoodById(id: Int): Food
+    fun getFoodByID(id: Int): Food
 
     @Query("SELECT * FROM Food WHERE name = :name")
-    suspend fun getFoodByName(name: String): List<Food>
+    fun getFoodByName(name: String): List<Food>
 
     @Insert
-    suspend fun insertFood(food: Food): Long
+    fun insertFood(food: Food): Long
 
     @Delete
-    suspend fun deleteFood(food: Food)
+    fun deleteFood(food: Food)
 
     @Insert
-    suspend fun insertFoodAction(foodAction: FoodAction): Long
+    fun insertFoodAction(foodAction: FoodAction): Long
 
     @Update
-    suspend fun updateFoodAction(foodAction: FoodAction)
+    fun updateFoodAction(foodAction: FoodAction)
 
     @Delete
-    suspend fun deleteFoodAction(foodAction: FoodAction)
+    fun deleteFoodAction(foodAction: FoodAction)
 
     @Transaction
     @Query("SELECT * FROM FoodAction WHERE id = :id")
-    suspend fun getFoodActionById(id: Int): FoodAction
+    fun getFoodActionById(id: Int): FoodAction
 
     @Transaction
-    @Query("SELECT * FROM FoodAction WHERE foodID = :foodID")
-    suspend fun getHistoryForFood(foodID: Int): List<FoodAction>
+    @Query("SELECT * FROM FoodAction WHERE foodID = :foodID ORDER BY date DESC")
+    fun getFoodHistory(foodID: Int): List<FoodAction>
 
     @Transaction
-    suspend fun getHistoryForFood(food: Food): List<FoodAction> {
-        return getHistoryForFood(food.id)
+    fun getFoodHistory(food: Food): List<FoodAction> {
+        return getFoodHistory(food.id)
     }
 
     @Transaction
@@ -56,6 +56,6 @@ interface FoodDao {
     }
 
     @Query("DELETE FROM food")
-    suspend fun nukeTable()
+    fun nukeTable()
 
 }

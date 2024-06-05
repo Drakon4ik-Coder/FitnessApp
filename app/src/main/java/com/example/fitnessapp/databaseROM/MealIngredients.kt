@@ -1,11 +1,10 @@
-package com.example.fitnessapp
+package com.example.fitnessapp.databaseROM
 
-import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.ForeignKey
+import com.example.fitnessapp.databaseROM.Food
 
 @Entity(
-    tableName = "MealIngredients",
     primaryKeys = ["mealID", "ingredientID"],
     foreignKeys = [
         ForeignKey(entity = Food::class, parentColumns = ["id"], childColumns = ["mealID"]),

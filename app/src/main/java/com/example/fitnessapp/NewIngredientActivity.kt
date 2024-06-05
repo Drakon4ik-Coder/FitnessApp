@@ -37,8 +37,8 @@ class NewIngredientActivity : AppCompatActivity() {
                 row?.let {
                     val nutrientName = (row.getChildAt(0) as MaterialTextView).text.toString().lowercase()
                     val nutrientAmount = (row.getChildAt(1) as EditText).text.toString().toDoubleOrNull() ?: 0.0
-                    val nutrient = Nutrient(nutrientName, nutrientAmount, "g")
-                    ingredientTMP.addNutrient(nutrient)
+                    val nutrientTMP = NutrientTMP(nutrientName, nutrientAmount, "g")
+                    ingredientTMP.addNutrient(nutrientTMP)
                 }
             }
 
