@@ -13,6 +13,7 @@ import com.example.fitnessapp.databaseROM.MealIngredients
 import com.example.fitnessapp.databaseROM.Nutrient
 import com.example.fitnessapp.databaseROM.NutrientWithAmount
 import com.example.fitnessapp.databaseROM.NutritionDao
+import com.example.fitnessapp.databaseROM.Unit
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.CoreMatchers.equalTo
 import org.hamcrest.MatcherAssert.assertThat
@@ -44,7 +45,7 @@ class AppDatabaseTest {
     }
 
     @Test
-    fun insertAndRetrieveOneNutrient() = runBlocking {
+    fun insertAndRetrieveNutrient() = runBlocking {
         // Given a nutrient
         val nutrient = Nutrient(name = "Vitamin A", shortName = "VA")
 
@@ -57,7 +58,7 @@ class AppDatabaseTest {
     }
 
     @Test
-    fun insertAndRetrieveOneFood() = runBlocking {
+    fun insertAndRetrieveFood() = runBlocking {
         // Given a food
         val food = Food(name = "Cheese")
 
@@ -125,9 +126,9 @@ class AppDatabaseTest {
         val carbsID = nutritionDao.insertNutrient(carbs).toInt()
         val protein = Nutrient(name = "Protein", shortName = "PRO")
         val proteinID = nutritionDao.insertNutrient(protein).toInt()
-        val foodNutrition1 = FoodNutrition(portion = 100, foodID = cheeseID, nutrientID = caloriesID, amount = 402f)
-        val foodNutrition2 = FoodNutrition(portion = 100, foodID = cheeseID, nutrientID = carbsID, amount = 1.3f)
-        val foodNutrition3 = FoodNutrition(portion = 100, foodID = cheeseID, nutrientID = proteinID, amount = 25f)
+        val foodNutrition1 = FoodNutrition(portion = 100, unit = Unit.g, foodID = cheeseID, nutrientID = caloriesID, amount = 402f)
+        val foodNutrition2 = FoodNutrition(portion = 100, unit = Unit.g, foodID = cheeseID, nutrientID = carbsID, amount = 1.3f)
+        val foodNutrition3 = FoodNutrition(portion = 100, unit = Unit.g, foodID = cheeseID, nutrientID = proteinID, amount = 25f)
         nutritionDao.insertFoodNutrition(foodNutrition1)
         nutritionDao.insertFoodNutrition(foodNutrition2)
         nutritionDao.insertFoodNutrition(foodNutrition3)
