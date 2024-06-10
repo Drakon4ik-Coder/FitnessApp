@@ -3,6 +3,7 @@ package com.example.fitnessapp.databaseROM
 import androidx.room.Entity
 import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
+import java.util.Date
 
 @Entity(
     tableName = "FoodAction",
@@ -12,7 +13,7 @@ data class FoodAction(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val foodID: Int,
     val action: Action,
-    val date: Long,
+    val date: Date,
     val amount: Float
 )
 

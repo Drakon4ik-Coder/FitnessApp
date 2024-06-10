@@ -29,6 +29,12 @@ interface NutritionDao {
         return getFoodNutrition(food.id)
     }
 
+    @Query("DELETE FROM Nutrient")
+    fun nukeNutrientTable()
+
+    @Query("DELETE FROM FoodNutrition")
+    fun nukeFoodNutritionTable()
+
 
 
 }

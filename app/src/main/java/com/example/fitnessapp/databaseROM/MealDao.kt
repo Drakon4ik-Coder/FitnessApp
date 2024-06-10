@@ -16,7 +16,7 @@ interface MealDao {
     fun delete(mealIngredient: MealIngredients)
 
     @Query("DELETE FROM MealIngredients")
-    fun nukeTable()
+    fun nukeMealTable()
 
     @Transaction
     @Query("""

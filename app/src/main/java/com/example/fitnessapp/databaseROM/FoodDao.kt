@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.Query
 import androidx.room.Transaction
 import androidx.room.Update
+import java.util.Date
 
 @Dao
 interface FoodDao {
@@ -16,7 +17,7 @@ interface FoodDao {
     fun getFoodByID(id: Int): Food
 
     @Query("SELECT * FROM Food WHERE name = :name")
-    fun getFoodByName(name: String): List<Food>
+    fun getFoodByName(name: String): Food
 
     @Insert
     fun insertFood(food: Food): Long
@@ -55,7 +56,12 @@ interface FoodDao {
         return getAvailableForFood(food.id)
     }
 
-    @Query("DELETE FROM food")
-    fun nukeTable()
+    @Query("SELECT Food.*, FoodAction.amount FROM Food JOIN FoodAction ON Food.id = FoodAction.foodID WHERE date(ROUND(date / 1000), 'unixepoch') = date(ROUND(:searchDate / 1000), 'unixepoch') AND `action` = 'EATEN' ORDER BY date ASC")
+    fun getEatenFoodByDate(searchDate: Date): List<FoodWithAmount>
 
+    @Query("DELETE FROM food")
+    fun nukeFoodTable()
+
+    @Query("DELETE FROM foodAction")
+    fun nukeActionTable()
 }
