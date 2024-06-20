@@ -19,4 +19,9 @@
     <string name="add_ingredient">Add ingredient</string>
     <string name="meal_name">Meal name</string>
     <string name="saturated_fats">Saturated Fats</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
