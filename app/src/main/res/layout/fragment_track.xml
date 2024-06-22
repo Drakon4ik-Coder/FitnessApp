@@ -185,21 +185,20 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginBottom="16dp">
+                    android:layout_marginBottom="@dimen/_8sdp">
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
                         android:layout_weight="1"
-                        android:layout_marginHorizontal="@dimen/_10sdp">
+                        android:gravity="center"
+                        android:layout_marginHorizontal="@dimen/_15sdp">
 
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:textSize="12sp"
-                            android:layout_marginBottom="@dimen/_2sdp"
-                            android:text="Carbohydrates" />
+                            android:text="Carbohydrates"
+                            android:textSize="12sp" />
 
                         <ProgressBar
                             android:id="@+id/carbsProgressBar"
@@ -208,21 +207,27 @@
                             android:layout_height="wrap_content"
                             android:progress="40"
                             android:progressDrawable="@drawable/linear_progress_drawable" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:layout_weight="1"
-                        android:layout_marginHorizontal="@dimen/_10sdp">
-
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:textSize="12sp"
                             android:layout_marginBottom="@dimen/_2sdp"
+                            android:text="104 / 260 g" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_marginHorizontal="@dimen/_15sdp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
                             android:text="Fats" />
 
                         <ProgressBar
@@ -232,21 +237,27 @@
                             android:layout_height="wrap_content"
                             android:progress="60"
                             android:progressDrawable="@drawable/linear_progress_drawable" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:layout_weight="1"
-                        android:layout_marginHorizontal="@dimen/_10sdp">
-
                         <TextView
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:textSize="12sp"
                             android:layout_marginBottom="@dimen/_2sdp"
+                            android:text="60 / 100 g" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:layout_marginHorizontal="@dimen/_15sdp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="12sp"
                             android:text="Protein" />
 
                         <ProgressBar
@@ -254,8 +265,15 @@
                             style="?android:attr/progressBarStyleHorizontal"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:progress="20"
+                            android:progress="90"
                             android:progressDrawable="@drawable/linear_progress_drawable" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textSize="12sp"
+                            android:layout_marginBottom="@dimen/_2sdp"
+                            android:text="126 / 140 g" />
                     </LinearLayout>
                 </LinearLayout>
                 <!-- Add more detailed calorie info if needed -->
