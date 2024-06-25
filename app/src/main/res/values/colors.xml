@@ -8,4 +8,10 @@
     <color name="stroke_color">#E0E0E0</color>
     <color name="consumedText">#FF5722</color>
     <color name="burnedText">#2196F3</color>
+
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="windowBackground">#FFFFFF</color>
+    <color name="textColorPrimary">#000000</color>
 </resources>
